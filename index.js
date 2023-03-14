@@ -103,4 +103,18 @@
       suggestionsContainer.prepend(movieCard);
     }
   }
+
+  // Add to favorite of localStorage
+  async function handleFavBtn(e) {
+    const target = e.target;
+
+    let data = await fetchMovies(target.dataset.id);
+
+    let favMoviesLocal = localStorage.getItem("favMoviesList");
+
+    if (favMoviesLocal) {
+      favMovieArray = Array.from(JSON.parse(favMoviesLocal));
+    } else {
+      localStorage.setItem("favMoviesList", JSON.stringify(data));
+    }
 })();
