@@ -54,4 +54,9 @@
       console.log(err);
     }
   }
+
+  // Shows in suggestion container DOM
+  function addToSuggestionContainerDOM(data) {
+    document.getElementById("empty-fav-text").style.display = "none";
+    let isPresent = false;
 })();
