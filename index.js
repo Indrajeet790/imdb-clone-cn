@@ -189,4 +189,31 @@
   function notify(text) {
     window.alert(text);
   }
+
+  // Handles click events
+  async function handleClickListener(e) {
+    const target = e.target;
+
+    if (target.classList.contains("add-fav")) {
+      e.preventDefault();
+      handleFavBtn(e);
+    } else if (target.classList.contains("fa-trash-can")) {
+      deleteMovie(target.dataset.id);
+    } else if (target.classList.contains("fa-bars")) {
+      if (showFavorites.style.display == "flex") {
+        document.getElementById("show-favorites").style.color = "#8b9595";
+        showFavorites.style.display = "none";
+      } else {
+        showFavorites.classList.add("");
+        document.getElementById("show-favorites").style.color =
+          "var(--logo-color)";
+        showFavorites.style.display = "flex";
+      }
+    }
+
+    localStorage.setItem("movieName", target.dataset.id);
+  }
+
+  // Event listener on whole document
+  document.addEventListener("click", handleClickListener);
 })();
