@@ -16,4 +16,12 @@
       event.preventDefault();
     }
   });
+
+  function showEmptyText() {
+    if (favMoviesContainer.innerHTML == "") {
+      emptyFavText.style.display = "block";
+    } else {
+      emptyFavText.style.display = "none";
+    }
+  }
 })();
