@@ -172,6 +172,18 @@
       });
     }
   }
+  // Delete from favorite list
+  function deleteMovie(name) {
+    let favList = JSON.parse(localStorage.getItem("favMoviesList"));
+    let updatedList = Array.from(favList).filter((movie) => {
+      return movie.Title != name;
+    });
+
+    localStorage.setItem("favMoviesList", JSON.stringify(updatedList));
+
+    addToFavDOM();
+    showEmptyText();
+  }
 
   // To notify
   function notify(text) {
