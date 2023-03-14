@@ -117,4 +117,21 @@
     } else {
       localStorage.setItem("favMoviesList", JSON.stringify(data));
     }
+    //to check if movie is already present in the fav list
+    let isPresent = false;
+    favMovieArray.forEach((movie) => {
+      if (data.Title == movie.Title) {
+        notify("already added to fav list");
+        isPresent = true;
+      }
+    });
+
+    if (!isPresent) {
+      favMovieArray.push(data);
+    }
+
+    localStorage.setItem("favMoviesList", JSON.stringify(favMovieArray));
+    isPresent = !isPresent;
+    addToFavDOM();
+  }
 })();
