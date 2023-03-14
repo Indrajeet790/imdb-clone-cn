@@ -172,4 +172,9 @@
       });
     }
   }
+
+  // To notify
+  function notify(text) {
+    window.alert(text);
+  }
 })();
