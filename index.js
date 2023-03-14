@@ -59,4 +59,48 @@
   function addToSuggestionContainerDOM(data) {
     document.getElementById("empty-fav-text").style.display = "none";
     let isPresent = false;
+
+    // to check if the movie is already present in the suggestionList array
+    suggestionList.forEach((movie) => {
+      if (movie.Title == data.Title) {
+        isPresent = true;
+      }
+    });
+
+    if (!isPresent && data.Title != undefined) {
+      if (data.Poster == "N/A") {
+        data.Poster = "";
+      }
+      suggestionList.push(data);
+      const movieCard = document.createElement("div");
+      movieCard.setAttribute("class", "text-decoration");
+
+      movieCard.innerHTML = `
+          <div class="card my-2" data-id = " ${data.Title} ">
+          <a href="movie.html" >
+            <img
+              src="${data.Poster} "
+              class="card-img-top"
+              alt="..."
+              data-id = "${data.Title} "
+            />
+            <div class="card-body text-start">
+              <h5 class="card-title" >
+                <a href="movie.html" data-id = "${data.Title} "> ${data.Title}  </a>
+              </h5>
+              <p class="card-text">
+                <i class="fa-solid fa-star">
+                  <span id="rating">&nbsp;${data.imdbRating}</span>
+                </i>
+                <button class="fav-btn">
+                  <i class="fa-solid fa-heart add-fav" data-id="${data.Title}"></i>
+                </button>
+              </p>
+            </div>
+          </a>
+        </div>
+      `;
+      suggestionsContainer.prepend(movieCard);
+    }
+  }
 })();
