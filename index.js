@@ -42,4 +42,16 @@
       suggestionsContainer.style.display = "grid";
     }
   });
+
+  // Fetches data from api and calls function to add it in
+  async function fetchMovies(search) {
+    const url = `https://www.omdbapi.com//?t=${search}&apikey=28a2ff0`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 })();
