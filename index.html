@@ -22,5 +22,33 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body></body>
+  <body>
+    <!-- Navbar section -->
+    <nav class="navbar bg-dark px-2 sticky-to">
+      <div class="container-fluid justify-content-start">
+        <a href="index.html" class="navbar-brand">
+          <span class="pt-4 site-name"> IMDB CLONE </span>
+        </a>
+
+        <!-- Search-Bar -->
+        <div id="search-bar" class="mx-auto">
+          <form action="" autocomplete="off">
+            <input
+              type="search"
+              placeholder="search movie"
+              id="search"
+              autocomplete="off"
+            />
+
+            <!-- search-btn -->
+            <button id="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+
+        <div id="show-favorites"><i class="fa-solid fa-bars"></i></div>
+      </div>
+    </nav>
+  </body>
 </html>
