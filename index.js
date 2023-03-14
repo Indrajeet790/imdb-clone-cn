@@ -134,4 +134,42 @@
     isPresent = !isPresent;
     addToFavDOM();
   }
+
+  // Add to favorite list DOM
+  function addToFavDOM() {
+    favMoviesContainer.innerHTML = "";
+
+    let favList = JSON.parse(localStorage.getItem("favMoviesList"));
+    if (favList) {
+      favList.forEach((movie) => {
+        const div = document.createElement("div");
+        div.classList.add(
+          "fav-movie-card",
+          "d-flex",
+          "justify-content-between",
+          "align-content-center",
+          "my-2"
+        );
+        div.innerHTML = `
+     
+      <img
+        src="${movie.Poster}"
+        alt=""
+        class="fav-movie-poster"
+      />
+      <div class="movie-card-details">
+        <p class="movie-name mt-3 mb-0">
+         <a href = "movie.html" class="fav-movie-name" data-id="${movie.Title}">${movie.Title}<a> 
+        </p>
+        <small class="text-muted">${movie.Year}</small>
+      </div>
+      <div class="delete-btn my-4">
+          <i class="fa-solid fa-trash-can" data-id="${movie.Title}"></i>
+      </div>
+      `;
+
+        favMoviesContainer.prepend(div);
+      });
+    }
+  }
 })();
