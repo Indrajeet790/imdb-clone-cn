@@ -24,4 +24,22 @@
       emptyFavText.style.display = "none";
     }
   }
+
+  // Event listener on search
+  searchKeyword.addEventListener("keyup", function () {
+    let search = searchKeyword.value;
+    if (search === "") {
+      emptyText.style.display = "block";
+      suggestionsContainer.innerHTML = "";
+      suggestionList = [];
+    } else {
+      emptyText.style.display = "none";
+      (async () => {
+        let data = await fetchMovies(search);
+        addToSuggestionContainerDOM(data);
+      })();
+
+      suggestionsContainer.style.display = "grid";
+    }
+  });
 })();
